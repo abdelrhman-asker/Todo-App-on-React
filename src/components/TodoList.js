@@ -21,9 +21,10 @@ const TodoList = () => {
         return
       }
 
+      const editting = prev => prev.map(item => (item.id === todoId ? newValue : item ))
       setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item )))
-    localStorage.setItem('inputs', JSON.stringify(...todos));
-
+    localStorage.setItem('inputs', JSON.stringify([...todos],{editting}));
+      
     };
 
     const removeTodo = id => {
